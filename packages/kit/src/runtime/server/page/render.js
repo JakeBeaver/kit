@@ -52,7 +52,7 @@ export async function render_response({
 	resolve_opts,
 	action_result
 }) {
-		if (state.prerendering) {
+	if (state.prerendering) {
 		if (options.csp.mode === 'nonce') {
 			throw new Error('Cannot use prerendering if config.kit.csp.mode === "nonce"');
 		}
@@ -356,8 +356,8 @@ export async function render_response({
 			args.push(`{\n\t\t\t\t\t\t\t${hydrate.join(',\n\t\t\t\t\t\t\t')}\n\t\t\t\t\t\t}`);
 		}
 
-		blocks.push(`if (${event.url.href} !== location.href) location.refresh();`)
-		
+		blocks.push(`if (${event.url.href} !== location.href) location.refresh();`);
+
 		blocks.push(`Promise.all([
 						import(${s(prefixed(client.start))}),
 						import(${s(prefixed(client.app))})
